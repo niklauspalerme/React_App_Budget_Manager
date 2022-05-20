@@ -8,13 +8,14 @@ import Error from './Error';
 //////////////////////////////////////////////////////////////////////////////////////////////
 /// Components
 
-const Question = () => {
+const Question = ({setBudget, setResult, setShowquestion}) => {
 
-    // State
+    ///// State
+
     const [quantity, setQuantity] = useState();
     const [error,setError]= useState(false)
 
-    //Events
+    ///// Events
 
     const defineBudget = (e) =>{
         setQuantity(parseInt(e.target.value));
@@ -28,10 +29,12 @@ const Question = () => {
             setError(true);
             return
         }
-
-        setError(false)
            
         //Si se pasa la validacion
+        setError(false);
+        setBudget(quantity);
+        setResult(quantity);
+        setShowquestion(false);
     }
 
     return ( 
