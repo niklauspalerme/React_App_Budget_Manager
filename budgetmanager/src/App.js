@@ -4,9 +4,10 @@
 
 import './App.css';
 import Question from './components/Question';
-import React, { useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import Form from './components/Form';
-
+import List from './components/List';
+import BudgetControl from './components/BudgetControl';
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 /// Components
@@ -18,16 +19,28 @@ function App() {
 
   const [budget, setBudget] = useState(0);
   const [result, setResult]= useState(0);
-  const [showquestion, setShowquestion] = useState(true)
-  const [expenses , setExpenses] = useState([])
+  const [showquestion, setShowquestion] = useState(true);
+  const [expenses , setExpenses] = useState([]);
+  const [expense, setExpense] = useState({});
+  const [createExpense, setCreateExpense] = useState(false);
 
 
-  ///// Functions
-  const addNewExpenses = newExpense => {
 
-    setExpenses([...expenses, newExpense]);
+  ///// useEffect
 
-  }
+  useEffect ( () =>{
+
+    if (createExpense){
+      setExpenses([...expenses, expense]); 
+      const budgetResult = result - expense.quantity;
+      setResult(budgetResult);
+    }
+
+    setCreateExpense(false);
+
+    
+
+  },[expense]); 
 
 
   return (
@@ -44,10 +57,11 @@ function App() {
             :(
                 <div className='row'>
                   <div className='one-half column'>
-                    <Form addNewExpenses={addNewExpenses}/>
+                    <Form setExpense={setExpense} setCreateExpense={setCreateExpense}/>
                   </div>
                   <div className='one-half column'>
-                    1
+                    <List expenses={expenses} />
+                    <BudgetControl budget={budget}  result={result}/>
                 </div>
               </div> 
             )

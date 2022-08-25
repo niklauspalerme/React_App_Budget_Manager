@@ -2,7 +2,7 @@ import React, {useState } from 'react'
 import Error from './Error';
 import shortid from 'shortid'; //npm i shortid
 
- const Form = ( {addNewExpenses}) => {
+ const Form = ( {setExpense, setCreateExpense}) => {
 
     const [name, setName] = useState('');
     const [quantity, setQuantity] = useState(0);
@@ -30,7 +30,8 @@ import shortid from 'shortid'; //npm i shortid
         }
 
         //d) Add the object to the global State -App.js
-        addNewExpenses(expense);
+        setExpense(expense);
+        setCreateExpense(true);
 
         //e) Reset the other states
         setName('');
