@@ -19,6 +19,15 @@ function App() {
   const [budget, setBudget] = useState(0);
   const [result, setResult]= useState(0);
   const [showquestion, setShowquestion] = useState(true)
+  const [expenses , setExpenses] = useState([])
+
+
+  ///// Functions
+  const addNewExpenses = newExpense => {
+
+    setExpenses([...expenses, newExpense]);
+
+  }
 
 
   return (
@@ -27,19 +36,20 @@ function App() {
         <h1>Budget Manager</h1>
         <div className='contenido-principal contenido'>
 
-          { showquestion === true
+          { 
+            showquestion === true
             ?(
               <Question  setBudget={setBudget} setResult={setResult} setShowquestion={setShowquestion}/>
             )
             :(
                 <div className='row'>
                   <div className='one-half column'>
-                    <Form/>
+                    <Form addNewExpenses={addNewExpenses}/>
                   </div>
                   <div className='one-half column'>
                     1
                 </div>
-              </div>
+              </div> 
             )
           }
         </div>
