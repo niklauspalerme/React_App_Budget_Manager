@@ -3,6 +3,7 @@
 
 import React, {Fragment, useState} from 'react';
 import Error from './Error';
+import PropTypes from 'prop-types';
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////
@@ -56,6 +57,15 @@ const Question = ({setBudget, setResult, setShowquestion}) => {
      );
 }
 
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+//PropTypes
+
+Question.propTypes = {
+    setBudget: PropTypes.func.isRequired, 
+    setResult: PropTypes.func.isRequired, 
+    setShowquestion: PropTypes.func.isRequired
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 /// Exports

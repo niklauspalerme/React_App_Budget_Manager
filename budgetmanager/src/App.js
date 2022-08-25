@@ -22,7 +22,7 @@ function App() {
   const [showquestion, setShowquestion] = useState(true);
   const [expenses , setExpenses] = useState([]);
   const [expense, setExpense] = useState({});
-  const [createExpense, setCreateExpense] = useState(false);
+  const [createExpense, setCreateExpense] = useState(false); //Flag
 
 
 
@@ -37,8 +37,6 @@ function App() {
     }
 
     setCreateExpense(false);
-
-    
 
   },[expense]); 
 
